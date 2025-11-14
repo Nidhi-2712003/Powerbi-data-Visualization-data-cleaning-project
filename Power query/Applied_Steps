@@ -1,1 +1,84 @@
+let
+    Source = Csv.Document(File.Contents("C:\Users\domar\Downloads\Data_sample.csv"),[Delimiter=","]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"full_name", type text}, {"age", Int64.Type}, {"martial_status", type text}, {"email", type text}, {"phone", type text}, {"full_address", type text}, {"job_title", type text}, {"membership_date", type text}}),
+    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"full_name", "Full_name"}, {"age", "Age"}, {"martial_status", "Martial_status"}, {"email", "Email"}, {"phone", "Phone"}, {"full_address", "Full_address"}, {"job_title", "Job_title"}, {"membership_date", "Membership_date"}}),
+    #"Trimmed Text" = Table.TransformColumns(#"Renamed Columns",{{"Full_name", Text.Trim, type text}, {"Martial_status", Text.Trim, type text}, {"Email", Text.Trim, type text}, {"Full_address", Text.Trim, type text}, {"Phone", Text.Trim, type text}, {"Job_title", Text.Trim, type text}, {"Membership_date", Text.Trim, type text}}),
+    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"Full_name", Text.Clean, type text}, {"Martial_status", Text.Clean, type text}, {"Email", Text.Clean, type text}, {"Full_address", Text.Clean, type text}, {"Phone", Text.Clean, type text}, {"Job_title", Text.Clean, type text}, {"Membership_date", Text.Clean, type text}}),
+    #"Capitalized Each Word" = Table.TransformColumns(#"Cleaned Text",{{"Full_name", Text.Proper, type text}}),
+    #"Inserted Removed Characters" = Table.AddColumn(#"Capitalized Each Word", "Removed Characters", each Text.Remove([Full_name], {"?"}), type text),
+    #"Reordered Columns" = Table.ReorderColumns(#"Inserted Removed Characters",{"Full_name", "Removed Characters", "Age", "Martial_status", "Email", "Phone", "Full_address", "Job_title", "Membership_date"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Reordered Columns",{"Full_name"}),
+    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns",{{"Removed Characters", "Full_name"}}),
+    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Renamed Columns1", {"Full_name", "Age", "Martial_status", "Email", "Phone", "Full_address", "Job_title", "Membership_date"}),
+    #"Replaced Value" = Table.ReplaceValue(#"Removed Errors","","Null",Replacer.ReplaceValue,{"Full_name", "Age", "Martial_status", "Email", "Phone", "Full_address", "Job_title", "Membership_date"}),
+    #"Split Column by Delimiter" = Table.SplitColumn(#"Replaced Value", "Full_address", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), {"Full_address.1", "Full_address.2"}),
+    #"Split Column by Delimiter1" = Table.SplitColumn(#"Split Column by Delimiter", "Full_address.1", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), {"Full_address.1.1", "Full_address.1.2", "Full_address.1.3"}),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter1",{{"Full_address.1.1", type text}, {"Full_address.1.2", type text}, {"Full_address.1.3", type text}, {"Full_address.2", type text}}),
+    #"Renamed Columns2" = Table.RenameColumns(#"Changed Type1",{{"Full_address.1.1", "Street"}, {"Full_address.1.2", "City"}, {"Full_address.1.3", "State"}}),
+    #"Removed Columns1" = Table.RemoveColumns(#"Renamed Columns2",{"Full_address.2"}),
+    #"Added Custom" = Table.AddColumn(#"Removed Columns1", "Cleaned_Date", each let raw = [Membership_date],
+    cleaned = Text.Trim(raw),
+    
+    // CASE 1: Value is exactly 4 digits (a standalone year)
+    isYearOnly = Text.Length(cleaned) = 4 and Value.Is(Value.FromText(cleaned), type number),
+    yearValue = if isYearOnly then Number.FromText(cleaned) else null,
 
+    // Fix: if year is in 1900s, change to 2000s
+    fixedYear = if isYearOnly and yearValue >= 1900 and yearValue <= 1999 
+        then yearValue + 100  
+        else yearValue,
+    
+    // CASE 2: Parse MM/DD/YYYY or MM-DD-YYYY (or other, with month/day/year)
+    delim = 
+        if Text.Contains(cleaned, "/") then "/" 
+        else if Text.Contains(cleaned, "-") then "-"
+        else null,
+    split = if delim <> null then Text.Split(cleaned, delim) else null,
+    month = if split <> null and List.Count(split) >= 1 then Text.PadStart(split{0}, 2, "0") else null,
+    day = if split <> null and List.Count(split) >= 2 then Text.PadStart(split{1}, 2, "0") else null,
+    year = if split <> null and List.Count(split) >= 3 then split{2} else null,
+    
+    // Fix: if year part is 19xx, change to 20xx
+    fixedFullYear = 
+        if year <> null and Text.Length(Text.Trim(year)) = 4 and Text.Start(Text.Trim(year), 2) = "19" 
+        then "20" & Text.End(Text.Trim(year), 2)
+        else year,
+    
+    // Build date string
+    dateString = 
+        if isYearOnly and fixedYear <> null 
+            then Text.From(fixedYear) & "-01-01"
+        else if month <> null and day <> null and fixedFullYear <> null 
+            then fixedFullYear & "-" & month & "-" & day
+        else null,
+    
+    // Try to convert to date, else null
+    result = try Date.From(dateString) otherwise null
+in
+    result),
+    #"Sorted Rows" = Table.Sort(#"Added Custom",{{"Email", Order.Ascending}}),
+    #"Removed Duplicates" = Table.Distinct(#"Sorted Rows", {"Email"}),
+    #"Capitalized Each Word1" = Table.TransformColumns(#"Removed Duplicates",{{"Martial_status", Text.Proper, type text}}),
+    #"Trimmed Text1" = Table.TransformColumns(#"Capitalized Each Word1",{{"Job_title", Text.Trim, type text}}),
+    #"Cleaned Text1" = Table.TransformColumns(#"Trimmed Text1",{{"Job_title", Text.Clean, type text}}),
+    #"Added Custom1" = Table.AddColumn(#"Cleaned Text1", "Cleaned_Age", each let ageVal = [Age],
+    ageText = if ageVal is null then "" else Text.From(ageVal),
+    digits = Text.Select(ageText, {"0".."9"}),
+    firstTwo = if Text.Length(digits) >= 2 then Text.Start(digits, 2) else digits,
+    result = try Number.From(firstTwo) otherwise null
+in
+    result),
+    #"Removed Columns2" = Table.RemoveColumns(#"Added Custom1",{"Membership_date"}),
+    #"Reordered Columns1" = Table.ReorderColumns(#"Removed Columns2",{"Full_name", "Cleaned_Age", "Age", "Martial_status", "Email", "Phone", "Street", "City", "State", "Job_title", "Cleaned_Date"}),
+    #"Removed Columns3" = Table.RemoveColumns(#"Reordered Columns1",{"Age"}),
+    #"Added Custom2" = Table.AddColumn(#"Removed Columns3", "Cleaned_Phone", each let raw = [Phone],
+    textValue = if raw is null then "" else Text.Trim(Text.From(raw)),
+    digits = Text.Select(textValue, {"0".."9"}),
+    cleaned = 
+        if Text.Length(digits) = 10 then
+            Text.Start(digits,3) & "-" & Text.Range(digits,3,3) & "-" & Text.End(digits,4)
+        else null
+in cleaned)
+in
+    #"Added Custom2"applied_steps.txt
