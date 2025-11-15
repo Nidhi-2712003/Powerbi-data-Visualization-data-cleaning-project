@@ -14,6 +14,7 @@ This project demonstrates professional data analytics capabilities through the c
 
 **Dataset**: Club Member Information (Mock Data)  
 **Tools Used**: Power Query Editor, Power BI Desktop, Excel
+
 (Note - This project uses a publicly available dataset originally published by [iweld](https://github.com/iweld/data_cleaning). All SQL cleaning logic and documentation were developed independently.)
 
 ---
