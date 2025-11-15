@@ -243,7 +243,8 @@ Powerbi-data-Visualization-data-cleaning-project/
 Interested in discussing this project or collaborating? Feel free to reach out!
 
 - **GitHub**: [@Nidhi-2712003](https://github.com/Nidhi-2712003)
-- **LinkedIn**: [Connect with me](https://www.linkedin.com/in/your-profile) *(Update with your LinkedIn URL)*
+- **LinkedIn**: [Connect with me](https://www.linkedin.com/in/d-nidhi-sree-998a6037a/)
+- - **Email**: domarajunidhi@gmail.com
 
 ---
 
