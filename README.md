@@ -83,7 +83,8 @@ Implemented comprehensive data quality processes using Power Query M language:
 - Removed temporary transformation columns
 - Validated all data types before loading
 
-**All transformation steps documented in**: `/Power query/Applied_Steps`
+**All transformation steps documented in**: (`/Power query/Applied_Steps`)(Power query/Applied_Steps)
+
 **Cleaned data file available at**: [`/Power query/Club_member_info_Project.xlsx`](./Power%20query/Club_member_info_Project.xlsx)
 
 ---
