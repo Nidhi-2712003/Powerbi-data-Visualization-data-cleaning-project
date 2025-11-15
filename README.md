@@ -136,7 +136,7 @@ Implemented comprehensive data quality processes using Power Query M language:
 
 ---
 
-(https://github.com/user-attachments/assets/ffb20002-0afc-4019-9e35-4ca18200e144)
+![Screenshot Name](https://github.com/user-attachments/assets/ffb20002-0afc-4019-9e35-4ca18200e144)
 
 
 ---
