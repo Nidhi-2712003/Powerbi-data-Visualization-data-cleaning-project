@@ -82,6 +82,7 @@ Implemented comprehensive data quality processes using Power Query M language:
 - Validated all data types before loading
 
 **All transformation steps documented in**: `/Power query/Applied_Steps`
+**Cleaned data file available at**: [`/Power query/Club_member_info_Project.xlsx`](./Power%20query/Club_member_info_Project.xlsx)
 
 ---
 
@@ -167,7 +168,7 @@ Powerbi-data-Visualization-data-cleaning-project/
 │
 ├── Power query/
 │   ├── Applied_Steps                          # Complete Power Query M code with all transformation steps
-│   └── Club_member_info_Project.xlsx          # Raw source data file
+│   └── Club_member_info_Project.xlsx          # Power Query cleaned data file
 │
 ├── Club_Members_Power_BI_Visulatiization.pbix  # Power BI Dashboard file
 │
