@@ -91,6 +91,7 @@ Implemented comprehensive data quality processes using Power Query M language:
 - Verified column data types and relationships
 - Prepared data model for visualization layer
 
+
 ---
 
 ### Phase 3: Dashboard Development
@@ -135,6 +136,11 @@ Implemented comprehensive data quality processes using Power Query M language:
 
 ---
 
+(https://github.com/user-attachments/assets/ffb20002-0afc-4019-9e35-4ca18200e144)
+
+
+---
+
 ## 💡 Key Insights & Business Value
 
 ### Sample Findings (Based on Mock Data)
@@ -170,26 +176,6 @@ Powerbi-data-Visualization-data-cleaning-project/
 
 ---
 
-## 🚀 How to Use This Project
-
-### Prerequisites
-- Microsoft Power BI Desktop (free download)
-- Excel or compatible spreadsheet viewer
-
-### Steps
-1. **Clone or download** this repository
-2. Open `Club_Members_Power_BI_Visulatiization.pbix` in Power BI Desktop
-3. Explore the interactive dashboard using slicers and filters
-4. Review Power Query transformations: *Home → Transform Data*
-5. Examine the `Applied_Steps` file for detailed M code logic
-
-### For Learning Purposes
-- Study the Applied_Steps file to understand Power Query patterns
-- Modify visualizations to practice Power BI skills
-- Experiment with additional DAX measures and calculations
-
----
-
 ## 📈 Skills Demonstrated
 
 ### Technical Skills
@@ -209,27 +195,6 @@ Powerbi-data-Visualization-data-cleaning-project/
 
 ---
 
-## 🔮 Future Enhancements
-
-- [ ] Add **custom DAX measures** for advanced metrics (Retention Rate, Churn Analysis)
-- [ ] Implement **drill-through pages** for detailed member profiles
-- [ ] Create **bookmarks** for guided storytelling experience
-- [ ] Design **mobile-optimized layout** for on-the-go viewing
-- [ ] Publish to **Power BI Service** for web-based sharing
-- [ ] Integrate **real-time data refresh** capabilities
-- [ ] Add **predictive analytics** using Power BI AI features
-- [ ] Build **decomposition tree** for hierarchical analysis
-
----
-
-## 📝 Notes
-
-- This project uses **mock/synthetic data** for demonstration purposes
-- Sensitive fields (Email, Phone) were masked during transformation to ensure privacy
-- Dashboard design follows Power BI best practices and accessibility standards
-
----
-
 ## 👤 About
 
 **Created by**: Nidhi  
@@ -244,14 +209,8 @@ Interested in discussing this project or collaborating? Feel free to reach out!
 
 - **GitHub**: [@Nidhi-2712003](https://github.com/Nidhi-2712003)
 - **LinkedIn**: [Connect with me](https://www.linkedin.com/in/d-nidhi-sree-998a6037a/)
-- - **Email**: domarajunidhi@gmail.com
+- **Email**: domarajunidhi@gmail.com
 
 ---
 
-## ⭐ Acknowledgments
-
-Thank you for reviewing this project! If you found it helpful or interesting, please consider giving it a star ⭐
-
----
-
-*Last Updated: November 2025*
+> © 2025 Nidhi Sree. This project is for educational and professional portfolio purposes. All examples use mock or publicly available data.
