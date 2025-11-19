@@ -180,7 +180,7 @@ Powerbi-data-Visualization-data-cleaning-project/
 
 ---
 
-## 📈 Skills Demonstrated
+## Skills Demonstrated
 
 ### Technical Skills
 - **Power Query M Language**: Complex data transformations and conditional logic
