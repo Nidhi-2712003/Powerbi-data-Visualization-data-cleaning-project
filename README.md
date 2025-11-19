@@ -4,7 +4,7 @@ A comprehensive **data cleaning and visualization project** showcasing end-to-en
 
 ---
 
-## 📊 Project Overview
+## Project Overview
 
 This project demonstrates professional data analytics capabilities through the complete BI workflow:
 - **Data Extraction**: Importing raw club membership data from Excel
@@ -19,7 +19,7 @@ This project demonstrates professional data analytics capabilities through the c
 
 ---
 
-## 🎯 Business Objective
+## Business Objective
 
 Analyze club membership data to discover:
 - **Demographic trends** (age groups, marital status)
@@ -31,7 +31,7 @@ These insights enable data-driven strategies for member engagement, targeted mar
 
 ---
 
-## 🔧 Technical Implementation
+## Technical Implementation
 
 ### Phase 1: Data Cleaning & Transformation (Power Query)
 
@@ -107,24 +107,24 @@ Implemented comprehensive data quality processes using Power Query M language:
 
 #### **Visual Components**
 
-1. **📈 Membership Trend Line Chart**
+1. **Membership Trend Line Chart**
    - Tracks new member enrollments over time
    - Identifies growth patterns and seasonal trends
 
-2. **🗺️ Geographic Distribution Map**
+2. **Geographic Distribution Map**
    - Visualizes member concentration by State
    - Helps identify top markets for expansion
 
-3. **👥 Demographic Breakdown**
+3. **Demographic Breakdown**
    - **Pie Chart**: Marital Status distribution
    - **Bar Chart**: Age group segmentation
    - Reveals target audience characteristics
 
-4. **💼 Professional Profile Analysis**
+4. **Professional Profile Analysis**
    - **Matrix/Table**: Top 10 Job Titles by member count
    - Shows club's professional membership base
 
-5. **🔍 Interactive Filters (Slicers)**
+5. **Interactive Filters (Slicers)**
    - State selector
    - Marital Status filter
    - Job Title filter
@@ -145,7 +145,7 @@ Implemented comprehensive data quality processes using Power Query M language:
 
 ---
 
-## 💡 Key Insights & Business Value
+## Key Insights & Business Value
 
 ### Sample Findings (Based on Mock Data)
 
@@ -157,14 +157,14 @@ Implemented comprehensive data quality processes using Power Query M language:
 
 ### Business Applications
 
-✅ **Marketing Strategy**: Target campaigns toward young professionals in top 3 states  
-✅ **Program Development**: Create networking events aligned with member demographics  
-✅ **Expansion Planning**: Prioritize new locations in underrepresented high-potential markets  
-✅ **Resource Allocation**: Staff and fund initiatives based on member concentration patterns
+**Marketing Strategy**: Target campaigns toward young professionals in top 3 states  
+**Program Development**: Create networking events aligned with member demographics  
+**Expansion Planning**: Prioritize new locations in underrepresented high-potential markets  
+**Resource Allocation**: Staff and fund initiatives based on member concentration patterns
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 Powerbi-data-Visualization-data-cleaning-project/
@@ -183,23 +183,23 @@ Powerbi-data-Visualization-data-cleaning-project/
 ## 📈 Skills Demonstrated
 
 ### Technical Skills
-- ✅ **Power Query M Language**: Complex data transformations and conditional logic
-- ✅ **ETL Processes**: Extract, Transform, Load best practices
-- ✅ **Data Cleaning**: Handling nulls, duplicates, inconsistent formats
-- ✅ **Data Modeling**: Proper data types and structure
-- ✅ **Power BI Development**: Interactive dashboard design
-- ✅ **Data Visualization**: Chart selection and design principles
-- ✅ **Business Intelligence**: Translating data into actionable insights
+- **Power Query M Language**: Complex data transformations and conditional logic
+- **ETL Processes**: Extract, Transform, Load best practices
+- **Data Cleaning**: Handling nulls, duplicates, inconsistent formats
+- **Data Modeling**: Proper data types and structure
+- **Power BI Development**: Interactive dashboard design
+- **Data Visualization**: Chart selection and design principles
+- **Business Intelligence**: Translating data into actionable insights
 
 ### Analytical Skills
-- ✅ Identifying business requirements and KPIs
-- ✅ Demographic and geographic trend analysis
-- ✅ Data quality assessment and remediation
-- ✅ Insight generation and storytelling with data
+- Identifying business requirements and KPIs
+- Demographic and geographic trend analysis
+- Data quality assessment and remediation
+- Insight generation and storytelling with data
 
 ---
 
-## 👤 About
+## About
 
 **Created by**: Nidhi  
 **Purpose**: Portfolio project demonstrating Business Analytics and Power BI skills  
@@ -207,7 +207,7 @@ Powerbi-data-Visualization-data-cleaning-project/
 
 ---
 
-## 📬 Contact & Feedback
+## Contact & Feedback
 
 Interested in discussing this project or collaborating? Feel free to reach out!
 
